@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>TalentLens | Placement Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-view="overview">
+        <span class="brand-mark">T</span>
+        <span><strong>TalentLens</strong><small>PLACEMENT INTELLIGENCE</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="overview"><span class="nav-icon">◫</span> Overview</button>
+        <button class="nav-link" data-view="applicants"><span class="nav-icon">♙</span> Applicants <span class="nav-count" id="navApplicantCount">0</span></button>
+        <button class="nav-link" data-view="jobs"><span class="nav-icon">▤</span> Job descriptions</button>
+        <button class="nav-link" data-view="compare"><span class="nav-icon">⇄</span> Compare candidates</button>
+        <button class="nav-link" data-view="reports"><span class="nav-icon">▥</span> Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="demo-note"><span class="demo-dot"></span><div><strong>Demo workspace</strong><small>Your data stays on this device</small></div></div>
+        <div class="profile"><div class="avatar avatar-indigo">PC</div><div><strong>Placement Cell</strong><small>College workspace</small></div><span class="profile-menu">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong id="pageTitle">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="local-status"><span class="status-dot"></span> Local demo mode</span>
+          <button class="button button-primary button-small" data-action="open-upload"><span>＋</span> Add applicant</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="view active" id="view-overview">
+          <div class="welcome-row">
+            <div><p class="eyebrow">PLACEMENT OVERVIEW</p><h1>Find the right fit.<br><span>Build what’s next.</span></h1><p class="welcome-copy">A clearer view of student potential, role alignment, and career readiness.</p></div>
+            <div class="welcome-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-core"><span>✦</span></div><span class="art-star star-one">✦</span><span class="art-star star-two">✦</span></div>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon icon-lilac">♙</div><div class="stat-label">Total applicants</div><div class="stat-value" id="statApplicants">—</div><div class="stat-foot"><span class="stat-foot-dot"></span> Profiles analyzed</div></article>
+            <article class="stat-card"><div class="stat-icon icon-mint">▤</div><div class="stat-label">Open positions</div><div class="stat-value" id="statJobs">—</div><div class="stat-foot"><span class="stat-foot-dot mint-dot"></span> Roles in workspace</div></article>
+            <article class="stat-card"><div class="stat-icon icon-peach">◉</div><div class="stat-label">Average match</div><div class="stat-value"><span id="statMatch">—</span><small>%</small></div><div class="stat-foot"><span class="stat-foot-dot peach-dot"></span> Across role matches</div></article>
+            <article class="stat-card"><div class="stat-icon icon-blue">✓</div><div class="stat-label">Shortlisted</div><div class="stat-value" id="statShortlist">—</div><div class="stat-foot"><span class="stat-foot-dot blue-dot"></span> Saved for review</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel matches-panel">
+              <div class="panel-heading"><div><p class="eyebrow">TALENT DISCOVERY</p><h2>Top role matches</h2></div><button class="text-button" data-view="applicants">View applicants <span>→</span></button></div>
+              <div class="match-list" id="topMatches"><div class="loading-state">Loading your workspace…</div></div>
+            </section>
+            <section class="panel roles-panel">
+              <div class="panel-heading"><div><p class="eyebrow">HIRING PIPELINE</p><h2>Active roles</h2></div><button class="icon-button pale-button" data-view="jobs" aria-label="View all roles">↗</button></div>
+              <div class="role-list" id="rolePreview"><div class="loading-state">Loading roles…</div></div>
+              <button class="button button-outline full-width" data-view="jobs">Explore job descriptions <span>→</span></button>
+            </section>
+          </div>
+          <div class="privacy-strip"><span>✧</span><div><strong>Thoughtful by design</strong><p>Match scores are explainable decision-support signals, not hiring decisions. Review the original resume and verify each skill with the applicant.</p></div><button class="strip-close" aria-label="Dismiss">×</button></div>
+        </section>
+
+        <section class="view" id="view-applicants">
+          <div class="section-heading"><div><p class="eyebrow">STUDENT TALENT</p><h1>Applicants</h1><p>Search profiles, explore role alignment, and build your shortlist.</p></div><button class="button button-primary" data-action="open-upload">＋ Add applicant</button></div>
+          <div class="toolbar panel">
+            <label class="search-box"><span>⌕</span><input id="candidateSearch" type="search" placeholder="Search name, skill, or email…" autocomplete="off"></label>
+            <label class="select-wrap"><span class="sr-only">Filter by role</span><select id="applicantJobFilter"><option value="">All roles</option></select></label>
+            <div class="toolbar-spacer"></div><span class="selection-count" id="selectionCount">0 selected</span><button class="button button-outline button-small" id="compareSelected" disabled>Compare selected <span>⇄</span></button>
+          </div>
+          <div id="applicantList" class="applicant-list"><div class="loading-state panel">Loading applicants…</div></div>
+          <div class="empty-state panel hidden" id="applicantEmpty"><div class="empty-illustration">♙</div><h3>No applicants found</h3><p>Try a different search or add a new resume.</p><button class="button button-primary" data-action="open-upload">Add applicant</button></div>
+        </section>
+
+        <section class="view" id="view-jobs">
+          <div class="section-heading"><div><p class="eyebrow">OPPORTUNITIES</p><h1>Job descriptions</h1><p>Define the essential and preferred skills for each placement role.</p></div><button class="button button-primary" data-action="show-job-form">＋ Add a role</button></div>
+          <div class="job-form panel hidden" id="jobFormPanel">
+            <div class="panel-heading"><div><p class="eyebrow">NEW OPPORTUNITY</p><h2>Create a job description</h2></div><button class="icon-button" data-action="hide-job-form" aria-label="Close">×</button></div>
+            <form id="jobForm" class="form-grid">
+              <label>Role title<input name="title" required maxlength="120" placeholder="e.g. Software Engineer Intern"></label>
+              <label>Department<input name="department" maxlength="80" placeholder="e.g. Engineering"></label>
+              <label class="form-wide">Role overview<textarea name="description" rows="3" maxlength="3000" placeholder="Describe the role, responsibilities, and qualifications…"></textarea></label>
+              <label>Essential skills <span class="field-hint">Comma-separated</span><input name="required" required placeholder="Python, SQL, communication"></label>
+              <label>Preferred skills <span class="field-hint">Comma-separated</span><input name="preferred" placeholder="Flask, teamwork"></label>
+              <div class="form-actions form-wide"><span class="form-message" id="jobMessage"></span><button class="button button-primary" type="submit">Save role</button></div>
+            </form>
+          </div>
+          <div class="jobs-grid" id="jobsList"><div class="loading-state panel">Loading roles…</div></div>
+        </section>
+
+        <section class="view" id="view-compare">
+          <div class="section-heading"><div><p class="eyebrow">SIDE-BY-SIDE REVIEW</p><h1>Compare candidates</h1><p>Compare up to four applicants against the same role using transparent criteria.</p></div></div>
+          <div class="compare-setup panel">
+            <label class="compare-field">Compare for<select id="compareJobSelect"></select></label>
+            <div class="compare-field candidate-picker"><label for="compareCandidateSelect">Choose applicants</label><select id="compareCandidateSelect" multiple size="4"></select><span class="field-hint">Use Ctrl or Command to select 2–4 people.</span></div>
+            <button class="button button-primary" id="runCompare">Compare applicants <span>→</span></button>
+          </div>
+          <div id="comparisonResult"></div>
+        </section>
+
+        <section class="view" id="view-reports">
+          <div class="section-heading"><div><p class="eyebrow">PLACEMENT INSIGHTS</p><h1>Reports</h1><p>Export an applicant ranking and shortlist snapshot for a role.</p></div></div>
+          <div class="report-panel panel"><div class="report-icon">▥</div><div><h2>Role match report</h2><p>Download a CSV with applicant match scores, essential skill coverage, and shortlist status. Use it as a starting point for a fair, human-led review.</p></div><div class="report-controls"><label>Job description<select id="reportJobSelect"></select></label><a class="button button-primary" id="downloadReport" href="/api/reports.csv">Download CSV <span>↓</span></a></div></div>
+          <div class="report-note">Reports contain student names and contact details. Store and share exports only with authorized placement staff.</div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="uploadModal" role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+    <section class="modal">
+      <div class="modal-heading"><div><p class="eyebrow">NEW STUDENT PROFILE</p><h2 id="uploadTitle">Add an applicant</h2><p>Upload a resume to extract profile details and skills.</p></div><button class="icon-button" data-action="close-upload" aria-label="Close dialog">×</button></div>
+      <form id="uploadForm">
+        <div class="form-grid">
+          <label>Student name<input name="name" required maxlength="120" placeholder="Full name"></label>
+          <label>Email <span class="field-hint">Optional</span><input name="email" type="email" maxlength="160" placeholder="student@college.edu"></label>
+          <label class="form-wide">Resume file
+            <span class="dropzone" id="dropzone"><span class="upload-icon">↑</span><strong>Choose a PDF or DOCX</strong><small>Maximum file size: 8 MB</small><input type="file" name="resume" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></span>
+          </label>
+          <p class="privacy-copy form-wide">The resume is processed locally and its extracted text is stored in this app’s SQLite database. Original files are not retained. If you configure an AI API key, resume text may be sent to that provider when opening an applicant profile.</p>
+        </div>
+        <div class="modal-footer"><span class="form-message" id="uploadMessage"></span><button class="button button-primary" type="submit" id="uploadSubmit">Analyze resume <span>✦</span></button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileName">
+    <section class="modal profile-modal" id="profileContent"><div class="loading-state">Loading applicant profile…</div></section>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+</body>
+</html>
