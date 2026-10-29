@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7f5">
+  <meta name="description" content="Careflow hospital operations and patient care platform.">
+  <title>Careflow — Hospital Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Careflow home" data-page="dashboard">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 5h6v8h8v6h-8v8h-6v-8H5v-6h8z" fill="currentColor"/></svg></span>
+        <span class="brand-name">careflow<span>.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg></span>Overview</button>
+        <button class="nav-link" data-page="patients"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Patients</button>
+        <button class="nav-link" data-page="doctors" data-roles="administrator,doctor,receptionist"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-16 0V5a2 2 0 0 1 2-2h1"/><path d="M8 3v4"/><path d="M12 19v2"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/></svg></span>Doctors</button>
+        <button class="nav-link" data-page="appointments" data-roles="administrator,doctor,receptionist"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>Appointments</button>
+        <div class="nav-section">CLINICAL OPERATIONS</div>
+        <button class="nav-link" data-page="departments"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01M15 13v.01M15 16v.01M15 19v.01"/></svg></span>Departments</button>
+        <button class="nav-link" data-page="records" data-roles="administrator,doctor"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg></span>Medical records</button>
+        <button class="nav-link" data-page="admissions"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 20V8l9-5 9 5v12M3 12h18M7 20v-4h10v4"/></svg></span>Admissions</button>
+        <button class="nav-link" data-page="beds"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 5v14M3 17h18v2M21 12v5M3 12h14a4 4 0 0 1 4 4"/><path d="M7 12V8h5a4 4 0 0 1 4 4"/></svg></span>Wards &amp; beds</button>
+        <div class="nav-section">SERVICES &amp; INSIGHTS</div>
+        <button class="nav-link" data-page="billing" data-roles="administrator,billing"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 3h16v18l-3-2-3 2-3-2-3 2-4-2z"/><path d="M8 8h8M8 12h8M8 16h3"/></svg></span>Billing &amp; invoices</button>
+        <button class="nav-link" data-page="pharmacy"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m10 3 11 11-7 7L3 10z"/><path d="m8 5 11 11M8 12h5M10.5 9.5v5"/></svg></span>Pharmacy</button>
+        <button class="nav-link" data-page="laboratory"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v7l-6 10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1l-6-10V3M8 16h8"/></svg></span>Laboratory</button>
+        <button class="nav-link" data-page="staff" data-roles="administrator"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 8v6M17 11h6"/></svg></span>Staff &amp; access</button>
+        <button class="nav-link" data-page="reports" data-roles="administrator,billing"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17"/><path d="m7 15 4-5 4 3 5-7"/></svg></span>Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.2 1.8c-1.1 1-1.8 1.3-1.8 2.7M12 17h.01"/></svg></div>
+          <strong>Need a hand?</strong>
+          <p>Your care team is here to help.</p>
+          <a href="mailto:support@careflow.local">Contact support <span>↗</span></a>
+        </div>
+        <div class="profile">
+          <div class="avatar avatar-user">AM</div>
+          <div class="profile-info"><strong>Alex Morgan</strong><span>Administrator</span></div>
+          <button class="more-button" aria-label="Open profile and settings" data-page="settings">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <label class="global-search" for="global-search-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="global-search-input" type="search" placeholder="Search anything..." autocomplete="off">
+            <kbd>⌘ K</kbd>
+          </label>
+          <button class="icon-button notification-button" aria-label="Notifications" data-page="notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><i></i></button>
+          <button class="topbar-avatar avatar avatar-user" aria-label="Profile and settings" data-page="settings">CF</button>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <section class="page-view active" id="page-dashboard">
+          <div class="welcome-row">
+            <div><p class="eyebrow" id="today-label">MONDAY, OCTOBER 28, 2026</p><h1>Good morning, Alex <span class="wave">✦</span></h1><p class="page-subtitle">Here’s what’s happening at your hospital today.</p></div>
+            <button class="button button-primary" data-action="new-appointment"><span class="plus">+</span> New appointment</button>
+          </div>
+          <div class="data-mode-banner hidden" id="data-mode-banner">This workspace contains clearly identified demo records. Dashboard metrics reflect records currently stored in this database.</div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Active patients</span><span class="stat-icon stat-blue"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87"/></svg></span></div><div class="stat-value" id="stat-patients">—</div><div class="stat-foot">Current patient records</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Appointments today</span><span class="stat-icon stat-green"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span></div><div class="stat-value" id="stat-today">—</div><div class="stat-foot"><span class="neutral-dot"></span><span><span id="upcoming-count">0</span> upcoming</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Active inpatients</span><span class="stat-icon stat-purple"><svg viewBox="0 0 24 24"><path d="M3 5v14M3 17h18v2M21 12v5M3 12h14a4 4 0 0 1 4 4"/></svg></span></div><div class="stat-value" id="stat-admissions">—</div><div class="stat-foot"><span id="stat-occupied-beds">0</span> beds currently occupied</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Payments received</span><span class="stat-icon stat-orange"><svg viewBox="0 0 24 24"><path d="M3 7h18v13H3zM3 10h18M7 16h3M7 4h10"/></svg></span></div><div class="stat-value stat-money" id="stat-revenue">—</div><div class="stat-foot"><span id="stat-outstanding">$0.00</span> outstanding · this month</div></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel appointments-panel">
+              <div class="panel-heading"><div><h2>Today’s appointments</h2><p>Your schedule for today</p></div><button class="text-button" data-page="appointments">View all <span>→</span></button></div>
+              <div class="table-wrap"><table class="data-table"><thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Department</th><th>Status</th></tr></thead><tbody id="today-appointments"></tbody></table><div class="empty-state hidden" id="today-empty"><span class="empty-icon">✦</span><strong>No appointments today</strong><p>When appointments are booked, they’ll show up here.</p><button class="button button-secondary" data-action="new-appointment">Book an appointment</button></div></div>
+            </section>
+            <section class="panel department-panel">
+              <div class="panel-heading"><div><h2>Departments</h2><p>Appointments by specialty</p></div><button class="dots-button" aria-label="Department options">•••</button></div>
+              <div class="department-list" id="department-list"></div>
+              <div class="department-foot"><span class="legend-dot"></span> Appointments this month</div>
+            </section>
+          </div>
+
+          <section class="panel activity-panel">
+            <div class="panel-heading"><div><h2>Recent appointments</h2><p>Latest activity across your hospital</p></div><button class="text-button" data-page="appointments">See all <span>→</span></button></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Patient</th><th>Doctor</th><th>Date &amp; time</th><th>Department</th><th>Status</th><th></th></tr></thead><tbody id="recent-appointments"></tbody></table></div>
+          </section>
+          <div class="overview-grid">
+            <section class="panel chart-panel"><div class="panel-heading"><div><h2>Visit activity</h2><p>Appointments scheduled · last 7 days</p></div><span class="chart-period">7 DAYS</span></div><div class="chart-legend"><span></span> Visits</div><div id="visits-chart" class="visits-chart"></div></section>
+            <section class="panel upcoming-panel"><div class="panel-heading"><div><h2>Coming up</h2><p>Next scheduled visits</p></div><button class="text-button" data-page="appointments">Schedule <span>→</span></button></div><div id="upcoming-list" class="upcoming-list"></div></section>
+            <section class="panel admissions-panel"><div class="panel-heading"><div><h2>Inpatient census</h2><p>Currently admitted patients</p></div><button class="text-button" data-page="admissions">View census <span>→</span></button></div><div id="admission-list" class="upcoming-list"></div></section>
+          </div>
+        </section>
+
+        <section class="page-view" id="page-patients">
+          <div class="page-heading-row"><div><p class="eyebrow">CARE DIRECTORY</p><h1>Patients</h1><p class="page-subtitle">Manage patient records and personal details.</p></div><button class="button button-primary" data-action="new-patient"><span class="plus">+</span> Add patient</button></div>
+          <section class="panel listing-panel"><div class="listing-toolbar"><div><h2>All patients <span class="count-pill" id="patient-count">0</span></h2><p>Patient directory</p></div><div class="listing-filters"><label class="table-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="patient-search" type="search" placeholder="Search patients..."></label><select class="select-filter" id="patient-sort"><option value="name:asc">Name A–Z</option><option value="name:desc">Name Z–A</option><option value="created:desc">Recently added</option><option value="last_visit:desc">Last visit</option></select><select class="select-filter" id="patient-filter"><option value="active">Active patients</option><option value="all">All patients</option></select></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Patient</th><th>Patient ID</th><th>Phone</th><th>Age / Gender</th><th>Last visit</th><th>Status</th><th></th></tr></thead><tbody id="patients-table"></tbody></table><div class="empty-state hidden" id="patients-empty"><span class="empty-icon">♧</span><strong>No patients found</strong><p>Try a different search or add your first patient.</p><button class="button button-secondary" data-action="new-patient">Add a patient</button></div></div><div id="patient-pagination" class="module-pagination"></div></section>
+        </section>
+
+        <section class="page-view" id="page-doctors">
+          <div class="page-heading-row"><div><p class="eyebrow">YOUR CARE TEAM</p><h1>Doctors</h1><p class="page-subtitle">Your medical team, all in one place.</p></div><button class="button button-primary" data-action="new-doctor"><span class="plus">+</span> Add doctor</button></div>
+          <div class="listing-toolbar doctor-toolbar"><div><h2>All doctors <span class="count-pill" id="doctor-count">0</span></h2><p>Your hospital directory</p></div><div class="listing-filters"><label class="table-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="doctor-search" type="search" placeholder="Search doctors..."></label><select class="select-filter" id="doctor-filter"><option value="active">Active doctors</option><option value="all">All doctors</option></select></div></div>
+          <div class="doctor-grid" id="doctor-grid"></div>
+          <div class="empty-state panel hidden" id="doctors-empty"><span class="empty-icon">✚</span><strong>No doctors found</strong><p>Add a doctor to build your care team.</p><button class="button button-secondary" data-action="new-doctor">Add a doctor</button></div>
+        </section>
+
+        <section class="page-view" id="page-appointments">
+          <div class="page-heading-row"><div><p class="eyebrow">SCHEDULE &amp; VISITS</p><h1>Appointments</h1><p class="page-subtitle">Create and manage your hospital schedule.</p></div><button class="button button-primary" data-action="new-appointment"><span class="plus">+</span> New appointment</button></div>
+          <div class="module-toolbar"><div class="module-filters"><label class="table-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="appointment-search" type="search" placeholder="Search appointments..."></label><select class="module-select" id="appointment-filter"><option value="all">All statuses</option><option value="scheduled">Scheduled</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select><input class="module-select" id="appointment-from" type="date" aria-label="From date"><input class="module-select" id="appointment-to" type="date" aria-label="To date"><select class="module-select" id="appointment-view"><option value="list">List view</option><option value="week">Week calendar</option></select></div><span class="count-pill" id="appointment-count">0 visits</span></div>
+          <section class="panel listing-panel" id="appointment-list-view"><div class="table-wrap"><table class="data-table"><thead><tr><th>Patient</th><th>Doctor</th><th>Date &amp; time</th><th>Department</th><th>Reason</th><th>Status</th><th></th></tr></thead><tbody id="appointments-table"></tbody></table><div class="empty-state hidden" id="appointments-empty"><span class="empty-icon">◷</span><strong>No appointments found</strong><p>Book an appointment to add it to your schedule.</p><button class="button button-secondary" data-action="new-appointment">New appointment</button></div></div></section>
+          <section class="panel hidden" id="appointment-calendar"><div id="calendar-grid" class="calendar-grid"></div></section>
+        </section>
+        <section class="page-view" id="page-module"></section>
+      </div>
+      <footer class="footer"><span>© <span id="footer-year"></span> Careflow Health</span><span>Better care, together.</span></footer>
+    </main>
+  </div>
+  <section class="auth-screen hidden" id="auth-screen" aria-labelledby="auth-title">
+    <div class="auth-brand"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 5h6v8h8v6h-8v8h-6v-8H5v-6h8z" fill="currentColor"/></svg></span><span>careflow<span>.</span></span></div>
+    <div class="auth-card"><div class="auth-symbol"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></div><p class="eyebrow" id="auth-eyebrow">SECURE WORKSPACE</p><h1 id="auth-title">Welcome back</h1><p class="auth-copy" id="auth-copy">Sign in to your Careflow workspace.</p><form id="auth-form"><div id="auth-fields" class="auth-fields"></div><div class="form-error hidden" id="auth-error" role="alert"></div><button class="button button-primary auth-submit" id="auth-submit" type="submit">Sign in</button></form><p class="auth-foot">Private by design <span>·</span> Your care data stays on this device.</p></div><p class="auth-version">CAREFLOW · SECURE HOSPITAL OPERATIONS</p>
+  </section>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <div class="modal-backdrop hidden" id="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><div><p class="eyebrow" id="modal-eyebrow">CARE MANAGEMENT</p><h2 id="modal-title">Add a patient</h2><p id="modal-description">Enter the patient’s details below.</p></div><button class="modal-close" id="modal-close" aria-label="Close dialog">×</button></div><form id="modal-form"><div id="modal-fields" class="modal-fields"></div><div class="form-error hidden" id="form-error" role="alert"></div><div class="modal-actions"><button type="button" class="button button-secondary" id="modal-cancel">Cancel</button><button type="submit" class="button button-primary" id="modal-submit">Save patient</button></div></form></section></div>
+</body>
+</html>
